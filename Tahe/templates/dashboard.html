@@ -1,16 +1,27 @@
 {% extends "base.html" %}
-{% block content %}
-<div class="dashboard-grid">
-    <section class="user-profile">
-        <h2>{{ user.name }}</h2>
-        <p>Email: {{ user.email }}</p>
-    </section>
 
-    <section class="car-details">
-        <img src="{{ user.car_photo_url }}" alt="Voiture de {{ user.name }}">
-        <p>Laveur: {{ car.washer_name }}</p>
-        <p>Temps au garage: {{ car.service_time }}h</p>
-        <p>Coût: {{ car.service_cost }}€</p>
-    </section>
+{% block content %}
+<div class="user-profile">
+    <h2>Bonjour, {{ current_user.username }}!</h2>
+    <div class="profile-details">
+        <p><strong>Email:</strong> {{ current_user.email }}</p>
+        <p><strong>Membre depuis:</strong> {{ current_user.join_date.strftime('%d/%m/%Y') }}</p>
+    </div>
+</div>
+
+<div class="car-dashboard">
+    <h3>Votre véhicule</h3>
+    <div class="car-card">
+        <div class="car-image">
+            <img src="{{ url_for('static', filename='uploads/' + car.photo_url) if car.photo_url else url_for('static', filename='images/default-car.jpg') }}" alt="Véhicule de {{ current_user.username }}">
+        </div>
+        <div class="car-details">
+            <p><strong>Modèle:</strong> {{ car.model }}</p>
+            <p><strong>Plaque d'immatriculation:</strong> {{ car.license_plate }}</p>
+            <p><strong>Laveur attitré:</strong> {{ washer.name }} (Note: {{ washer.rating }}/5)</p>
+            <p><strong>Temps au garage:</strong> {{ car.service_time }} minutes</p>
+            <p><strong>Coût du service:</strong> {{ car.service_cost }} €</p>
+        </div>
+    </div>
 </div>
 {% endblock %}
