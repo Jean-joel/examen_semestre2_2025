@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-wu64#voagt@nw%@=hu&@9+%*#g@8-5ce3kok&yc7rfm#hfs47g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Tahe',
-    'exam',
 ]
 
 MIDDLEWARE = [
@@ -117,19 +116,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 # settings.py
-import os
-# Sécurité
-#SECURE_SSL_REDIRECT = True  # En production
-#SESSION_COOKIE_SECURE = True
-#CSRF_COOKIE_SECURE = True
-#SECURE_BROWSER_XSS_FILTER = True
-LOGIN_URL = '/accounts/login/'
+import os  # Import crucial ici
 
-# Static files
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 
 # Default primary key field type
