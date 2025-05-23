@@ -1,0 +1,9 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+.car-details img {
+    max-width: 300px;
+    border-radius: 8px;
+}

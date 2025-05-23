@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard-grid">
+    <section class="user-profile">
+        <h2>{{ user.name }}</h2>
+        <p>Email: {{ user.email }}</p>
+    </section>
+
+    <section class="car-details">
+        <img src="{{ user.car_photo_url }}" alt="Voiture de {{ user.name }}">
+        <p>Laveur: {{ car.washer_name }}</p>
+        <p>Temps au garage: {{ car.service_time }}h</p>
+        <p>Coût: {{ car.service_cost }}€</p>
+    </section>
+</div>
+{% endblock %}
